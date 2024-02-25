@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottomNavHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Home"
+        android:icon="@drawable/material_symbols_light__home_rounded"/>
+    <item
+        android:id="@+id/bottomNav1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Untitled 1"
+        android:icon="@drawable/fluent_emoji_flat__red_question_mark"/>
+    <item
+        android:id="@+id/bottomNav2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Untitled 2"
+        android:icon="@drawable/fluent_emoji_flat__red_question_mark"/>
+    <item
+        android:id="@+id/bottomNav3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Untitled 3"
+        android:icon="@drawable/fluent_emoji_flat__red_question_mark"/>
+</menu>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">kotlin-api-project</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_fragment">Hello Fragment</string>
+    <string name="second_fragment">Second Fragment</string>
+    <string name="third_fragment">Third Fragment</string>
+    <string name="fourth_fragment">Fourth Fragment</string>
 </resources>
