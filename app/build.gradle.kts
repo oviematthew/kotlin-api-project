@@ -33,13 +33,22 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+//    buildFeatures {
+//        viewBinding= true
+//    }
+
+    viewBinding {
+        enable = true
+    }
     buildFeatures {
-        viewBinding= true
+        viewBinding = true
     }
 }
 
 dependencies {
 
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     val retrofit_version = "2.9.0"
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -57,4 +66,9 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
     //Gson
     implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
+
+    //Google Maps
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-location:21.1.0")
+
 }
