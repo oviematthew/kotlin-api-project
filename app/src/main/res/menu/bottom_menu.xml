@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="bottom_about"
+        android:id="@+id/bottom_about"
         android:icon="@drawable/baseline_info_24"
         android:title="@string/about_title"/>
 
     <item
-        android:id="bottom_businesses"
+        android:id="@+id/bottom_businesses"
         android:icon="@drawable/baseline_apartment_24"
         android:title="@string/business_title"/>
 
     <item
-        android:id="bottom_events"
+        android:id="@+id/bottom_events"
         android:icon="@drawable/baseline_calendar_month_24"
         android:title="@string/events_title"/>
 
     <item
-        android:id="bottom_reviews"
+        android:id="@+id/bottom_reviews"
         android:icon="@drawable/baseline_chat_24"
         android:title="@string/reviews_title"/>
 
