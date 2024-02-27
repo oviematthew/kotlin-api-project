@@ -2,11 +2,11 @@ package com.example.kotlin_api_project
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kotlin_api_project.adapter.EventsAdapter
 import com.example.kotlin_api_project.databinding.ActivityEventsBinding
 import com.example.kotlin_api_project.network.YelpService
 import com.example.kotlin_api_project.network.RetrofitProvider
