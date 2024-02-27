@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- item_business.xml -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@id/imageView"
+        android:text="Business Name"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textName"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@id/imageView"
+        android:text="Address"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textAddress"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@id/imageView"
+        android:text="Phone"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textPhone"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@id/imageView"
+        android:text="Status"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textStatus"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@id/imageView"
+        android:text="Rating"
+        android:textSize="14sp" />
+
+</RelativeLayout>
