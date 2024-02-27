@@ -47,7 +47,7 @@ class AboutActivity : AppCompatActivity() {
         bottomNavigationView.selectedItemId = R.id.bottom_about
 
             // Set a listener for item selection
-            bottomNavigationView.setOnNavigationItemSelectedListener() { menuItem ->
+            bottomNavigationView.setOnItemSelectedListener{ menuItem ->
             when (menuItem.itemId) {
                 R.id.bottom_about -> {
                     overridePendingTransition(0, 0)
