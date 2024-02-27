@@ -34,7 +34,7 @@ class BusinessAdapter(private val businessList: List<Businesses>) :
     //set view to xml file created, and inflate
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BusinessViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.business_recycler, parent, false)
+            .inflate(R.layout.item_business, parent, false)
         return BusinessViewHolder(view)
     }
 
