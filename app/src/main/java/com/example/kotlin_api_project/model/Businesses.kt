@@ -5,6 +5,6 @@ data class Businesses(
     val isClosed: Boolean,
     val imageUrl: String,
     val rating: Float,
-    val location: List<Location>,
+    val location: Location,
     val phone: String
 )

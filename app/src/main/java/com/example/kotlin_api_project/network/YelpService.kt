@@ -9,11 +9,13 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface YelpService {
-    @GET("businesses/search?term={term}&location={location}&sort_by=best_match&limit=20")
+    @GET("businesses/search")
     suspend fun getBusinesses(
         @Header("Authorization") authorizationHeader: String,
-        @Path("term") term: String,
-        @Path("location") location: String
+        @Query("term") term: String,
+        @Query("location") location: String,
+        @Query("sort_by") sortBy: String = "best_match",
+        @Query("limit") limit: Int = 20
     ): Response<List<Businesses>>
 
     @GET("events?limit=3&sort_by=desc&sort_on=popularity")

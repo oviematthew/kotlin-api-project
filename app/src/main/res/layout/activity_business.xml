@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/searchTextInputLayout"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="5dp"
         android:text="@string/search"
         app:cornerRadius="0dp" />
 

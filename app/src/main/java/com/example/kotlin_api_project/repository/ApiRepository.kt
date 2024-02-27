@@ -17,6 +17,26 @@ class ApiRepository(private val yelpService: YelpService) {
 //        return yelpService.getBusinesses(apiKey, term, latitude.toString(), longitude.toString())
 //    }
 
+    suspend fun getBusinesses(
+        apiKey: String,
+        term: String,
+        location: String
+    ): List<Businesses>? {
+        return try {
+            val response = yelpService.getBusinesses("Bearer $apiKey", term, location)
+            logApiResponse(response)
+
+            if (response.isSuccessful) {
+                response.body() // Return the list of businesses
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            Log.e("ApiRepository", "Error fetching businesses", e)
+            null
+        }
+    }
+
     suspend fun getNearbyEvents(location: String?, latitude: Double?, longitude: Double?): List<Event>? {
         return try {
             val response = yelpService.getNearbyEvents("Bearer ${apiKey}", location, latitude, longitude)

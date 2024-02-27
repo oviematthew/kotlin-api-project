@@ -9,37 +9,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_api_project.R
 import com.example.kotlin_api_project.model.Businesses
 
-class BusinessAdapter(private val businessList: List<Businesses>) :
+class BusinessAdapter(var businessList: List<Businesses>) :
     RecyclerView.Adapter<BusinessAdapter.BusinessViewHolder>() {
+
     inner class BusinessViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var imageView: ImageView
-        var textName: TextView
-        var textAddress: TextView
-        var textPhone: TextView
-        var textStatus: TextView
-        var textRating: TextView
-
-
-        init {
-            //find views from xml file
-            imageView = view.findViewById(R.id.imageView)
-            textName = view.findViewById(R.id.textName)
-            textAddress = view.findViewById(R.id.textAddress)
-            textPhone = view.findViewById(R.id.textPhone)
-            textStatus = view.findViewById(R.id.textStatus)
-            textRating = view.findViewById(R.id.textRating)
-        }
+        var imageView: ImageView = view.findViewById(R.id.imageView)
+        var textName: TextView = view.findViewById(R.id.textName)
+        var textAddress: TextView = view.findViewById(R.id.textAddress)
+        var textPhone: TextView = view.findViewById(R.id.textPhone)
+        var textStatus: TextView = view.findViewById(R.id.textStatus)
+        var textRating: TextView = view.findViewById(R.id.textRating)
     }
 
-    //set view to xml file created, and inflate
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BusinessViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_business, parent, false)
         return BusinessViewHolder(view)
     }
 
-
-    //return a count of all items in the list
     override fun getItemCount(): Int {
         return businessList.size
     }
@@ -48,15 +35,9 @@ class BusinessAdapter(private val businessList: List<Businesses>) :
         val business = businessList[position]
 
         holder.textName.text = business.name
-        //holder.textAddress.text = business.location.displayAddress
+        holder.textAddress.text = business.location.displayAddress.joinToString(separator = "\n")
         holder.textPhone.text = business.phone
         holder.textStatus.text = if (business.isClosed) "Closed" else "Opened"
         holder.textRating.text = "Rating: ${business.rating}"
-
-
     }
-
-
-
-
 }
