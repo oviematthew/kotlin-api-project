@@ -1,6 +1,5 @@
 package com.example.kotlin_api_project.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,15 +10,41 @@ import com.example.kotlin_api_project.R
 import com.example.kotlin_api_project.model.Businesses
 
 class BusinessAdapter(private val businessList: List<Businesses>) :
-    RecyclerView.Adapter<BusinessAdapter.ViewHolder>() {
+    RecyclerView.Adapter<BusinessAdapter.BusinessViewHolder>() {
+    inner class BusinessViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var imageView: ImageView
+        var textName: TextView
+        var textAddress: TextView
+        var textPhone: TextView
+        var textStatus: TextView
+        var textRating: TextView
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.business_recycler, parent, false)
-        return ViewHolder(view)
+
+        init {
+            //find views from xml file
+            imageView = view.findViewById(R.id.imageView)
+            textName = view.findViewById(R.id.textName)
+            textAddress = view.findViewById(R.id.textAddress)
+            textPhone = view.findViewById(R.id.textPhone)
+            textStatus = view.findViewById(R.id.textStatus)
+            textRating = view.findViewById(R.id.textRating)
+        }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    //set view to xml file created, and inflate
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BusinessViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.business_recycler, parent, false)
+        return BusinessViewHolder(view)
+    }
+
+
+    //return a count of all items in the list
+    override fun getItemCount(): Int {
+        return businessList.size
+    }
+
+    override fun onBindViewHolder(holder: BusinessViewHolder, position: Int) {
         val business = businessList[position]
 
         holder.textName.text = business.name
@@ -31,16 +56,7 @@ class BusinessAdapter(private val businessList: List<Businesses>) :
 
     }
 
-    override fun getItemCount(): Int {
-        return businessList.size
-    }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.imageView)
-        val textName: TextView = itemView.findViewById(R.id.textName)
-        val textAddress: TextView = itemView.findViewById(R.id.textAddress)
-        val textPhone: TextView = itemView.findViewById(R.id.textPhone)
-        val textStatus: TextView = itemView.findViewById(R.id.textStatus)
-        val textRating: TextView = itemView.findViewById(R.id.textRating)
-    }
+
+
 }

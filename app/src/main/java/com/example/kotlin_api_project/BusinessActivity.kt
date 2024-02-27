@@ -12,7 +12,7 @@ import com.example.kotlin_api_project.viewmodel.BusinessesViewModel
 class BusinessActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBusinessBinding
-    private val businessList = mutableListOf<Businesses>()
+    private val businessList = List<Businesses>()
     private lateinit var businessesViewModel: BusinessesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
