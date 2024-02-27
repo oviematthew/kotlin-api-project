@@ -9,13 +9,13 @@ import retrofit2.Response
 
 class ApiRepository(private val yelpService: YelpService) {
 
-    suspend fun fetchBusinessesFromServer(
-        term: String,
-        latitude: Double,
-        longitude: Double
-    ): Response<List<Businesses>> {
-        return yelpService.getBusinesses(apiKey, term, latitude.toString(), longitude.toString())
-    }
+//    suspend fun fetchBusinessesFromServer(
+//        term: String,
+//        latitude: Double,
+//        longitude: Double
+//    ): Response<List<Businesses>> {
+//        return yelpService.getBusinesses(apiKey, term, latitude.toString(), longitude.toString())
+//    }
 
     suspend fun getNearbyEvents(location: String?, latitude: Double?, longitude: Double?): List<Event>? {
         return try {
