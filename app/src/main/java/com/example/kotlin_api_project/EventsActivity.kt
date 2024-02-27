@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_api_project.databinding.ActivityEventsBinding
-import com.example.kotlin_api_project.network.ApiService
+import com.example.kotlin_api_project.network.YelpService
 import com.example.kotlin_api_project.network.RetrofitProvider
 import com.example.kotlin_api_project.repository.ApiRepository
 import com.example.kotlin_api_project.viewmodel.EventViewModel
@@ -74,7 +74,7 @@ class EventsActivity : AppCompatActivity() {
     }
 
     private fun updateEventList() {
-        val apiService = RetrofitProvider.retrofitInstance.create(ApiService::class.java)
+        val apiService = RetrofitProvider.retrofitInstance.create(YelpService::class.java)
         val apiRepository = ApiRepository(apiService)
 
 

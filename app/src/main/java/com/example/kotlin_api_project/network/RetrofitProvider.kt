@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitProvider {
     private const val BASE_URL = "https://api.yelp.com/v3/"
-
+    val retrofitInstance by lazy { getRetrofit() }
     fun createYelpService(): YelpService {
         return getRetrofit().create(YelpService::class.java)
     }

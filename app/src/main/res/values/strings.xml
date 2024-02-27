@@ -4,8 +4,8 @@
     <string name="business_title">Businesses</string>
     <string name="events_title">Events</string>
     <string name="reviews_title">Reviews</string>
-    <string name="about_screen">About Screen</string>
-    <string name="business_screen">Business Screen</string>
+    <string name="about_screen">About Group Members</string>
+    <string name="business_screen">Businesses</string>
     <string name="events_screen">Events Screen</string>
     <string name="reviews_screen">Reviews Screen</string>
     <string name="maps_apiKey">AIzaSyAWEIFtX5oSl2gC-bROnD_bPwHK07dcHS4</string>
@@ -53,4 +53,6 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="view_location">View Location</string>
+    <string name="search_location">Search Location</string>
+    <string name="search">Search</string>
 </resources>

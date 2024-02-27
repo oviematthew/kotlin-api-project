@@ -10,7 +10,7 @@ import retrofit2.Response
 class ApiRepository(private val yelpService: YelpService) {
 
     suspend fun fetchBusinessesFromServer(
-        term: String?,
+        term: String,
         latitude: Double,
         longitude: Double
     ): Response<List<Businesses>> {

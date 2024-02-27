@@ -12,7 +12,6 @@ import com.example.kotlin_api_project.viewmodel.BusinessesViewModel
 class BusinessActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBusinessBinding
-    private val businessList = List<Businesses>()
     private lateinit var businessesViewModel: BusinessesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +20,25 @@ class BusinessActivity : AppCompatActivity() {
         // Inflate the activity and set the contentView to the root of the xml
         binding = ActivityBusinessBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //items in xml to use for search and location buttons
+        var locationBtn = binding.locationBtn
+        var searchField = binding.searchLocationtext
+        var searchBtn = binding.searchBtn
+
+
+        // Retrieve latitude and longitude from Intent extras
+        val intent = intent
+        if (intent.hasExtra("LATITUDE") && intent.hasExtra("LONGITUDE")) {
+            val latitude = intent.getDoubleExtra("LATITUDE", 0.0)
+            val longitude = intent.getDoubleExtra("LONGITUDE", 0.0)
+
+            // Set a click listener for locationBtn
+            locationBtn.setOnClickListener {
+                // Update the text of searchLocationtext on click
+//                searchField.text.toString() = "$latitude, $longitude"
+            }
+        }
 
         // Access views using binding
         val bottomNavigationView = binding.bottomNavigationView
@@ -49,7 +67,6 @@ class BusinessActivity : AppCompatActivity() {
         }
 
 
-        val businessesAdapter = BusinessAdapter(businessList)
     }
 
 
