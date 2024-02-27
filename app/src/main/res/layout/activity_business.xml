@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,58 +10,64 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
         android:text="@string/business_screen"
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/searchTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search_businesses"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchTextInputLayout"
+        android:layout_marginTop="8dp"
+        android:text="@string/search"
+        app:cornerRadius="0dp" />
+
+    <ImageButton
+        android:id="@+id/locationBtn"
+        android:layout_width="44dp"
+        android:layout_height="37dp"
+        android:layout_below="@+id/searchTextInputLayout"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="13dp"
+        android:layout_toEndOf="@+id/searchButton"
+        android:background="@color/purple"
+        android:contentDescription="@string/location_finder"
+        app:srcCompat="@drawable/baseline_add_location_alt_24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchButton"
+        android:layout_marginTop="16dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:background="@drawable/bottom_background"
+        app:menu="@menu/bottom_menu"
         app:itemIconTint="@drawable/item_selector"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu" />
+        android:layout_alignParentBottom="true" />
 
-    <EditText
-        android:id="@+id/searchLocationtext"
-        android:layout_width="169dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/search_location"
-        app:layout_constraintEnd_toStartOf="@+id/searchBtn"
-        app:layout_constraintStart_toEndOf="@+id/locationBtn"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
-        android:id="@+id/searchBtn"
-        android:layout_width="93dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/search"
-        app:cornerRadius="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <ImageButton
-        android:id="@+id/locationBtn"
-        android:layout_width="77dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="24dp"
-        android:background="@color/white"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/baseline_add_location_alt_24" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

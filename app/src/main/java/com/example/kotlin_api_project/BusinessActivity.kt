@@ -23,8 +23,8 @@ class BusinessActivity : AppCompatActivity() {
 
         //items in xml to use for search and location buttons
         var locationBtn = binding.locationBtn
-        var searchField = binding.searchLocationtext
-        var searchBtn = binding.searchBtn
+        var searchField = binding.searchEditText
+        var searchBtn = binding.searchButton
 
 
         // Retrieve latitude and longitude from Intent extras
