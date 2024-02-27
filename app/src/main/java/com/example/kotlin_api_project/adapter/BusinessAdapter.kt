@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_api_project.R
 import com.example.kotlin_api_project.model.Businesses
 
-class BusinessAdapter(private val context: Context, private val businessList: List<Businesses>) :
+class BusinessAdapter(private val businessList: List<Businesses>) :
     RecyclerView.Adapter<BusinessAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
-            LayoutInflater.from(context).inflate(R.layout.business_recycler, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.business_recycler, parent, false)
         return ViewHolder(view)
     }
 
@@ -23,7 +23,7 @@ class BusinessAdapter(private val context: Context, private val businessList: Li
         val business = businessList[position]
 
         holder.textName.text = business.name
-        holder.textAddress.text = business.location.displayAddress.joinToString("\n")
+        //holder.textAddress.text = business.location.displayAddress
         holder.textPhone.text = business.phone
         holder.textStatus.text = if (business.isClosed) "Closed" else "Opened"
         holder.textRating.text = "Rating: ${business.rating}"
