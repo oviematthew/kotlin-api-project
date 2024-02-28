@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:text="@string/check_business_competition"
         android:textSize="24sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
         android:layout_centerHorizontal="true" />
 
     <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
@@ -38,11 +40,13 @@
 
     <View
         android:id="@+id/divider"
-        android:layout_width="match_parent"
+        android:layout_width="380dp"
         android:layout_height="1dp"
         android:layout_below="@+id/btnGetBusinesses"
         android:layout_marginTop="16dp"
-        android:background="@android:color/darker_gray" />
+        android:background="@android:color/darker_gray"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBusinesses"
@@ -58,7 +62,10 @@
         android:background="@drawable/bottom_background"
         app:menu="@menu/bottom_menu"
         app:itemIconTint="@drawable/item_selector"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        app:itemTextColor="@color/white"
+        app:itemActiveIndicatorStyle="@style/Theme.BottomNavigationView.ActiveIndicator"
+        />
 
     <ProgressBar
         android:id="@+id/progressBar"

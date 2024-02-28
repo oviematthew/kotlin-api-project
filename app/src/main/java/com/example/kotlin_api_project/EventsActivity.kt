@@ -2,6 +2,8 @@ package com.example.kotlin_api_project
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -35,6 +37,8 @@ class EventsActivity : AppCompatActivity() {
 
         updateEventList()
 
+        val searchField = binding.searchEditText
+
         // Access views using binding
         val bottomNavigationView = binding.bottomNavigationView
         bottomNavigationView.selectedItemId = R.id.bottom_events
@@ -66,8 +70,14 @@ class EventsActivity : AppCompatActivity() {
 
 
         binding.searchButton.setOnClickListener {
-            val location = binding.searchEditText.text.toString()
+//            val location = binding.searchEditText.text.toString()
+            val location = searchField.text.toString()
             eventViewModel.searchNearbyEvents(location, null, null)
+
+            // Hide the keyboard
+            hideKeyboard()
+            searchField.clearFocus()
+
         }
     }
 
@@ -93,6 +103,12 @@ class EventsActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    private fun hideKeyboard() {
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        val view = currentFocus ?: View(this)
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 }

@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:text="@string/business_screen"
         android:textSize="30sp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,16 +21,19 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/searchTextInputLayout"
-        android:layout_width="match_parent"
+        android:layout_width="365dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
-        android:layout_marginTop="16dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/searchEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/search_location"/>
+            android:width="300dp"
+            android:hint="@string/search_location" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -37,19 +42,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/searchTextInputLayout"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="5dp"
         android:text="@string/search"
-        app:cornerRadius="0dp" />
+        android:layout_marginStart="13dp"/>
 
     <ImageButton
         android:id="@+id/locationBtn"
         android:layout_width="47dp"
         android:layout_height="41dp"
         android:layout_below="@+id/searchTextInputLayout"
-        android:layout_marginStart="22dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="11dp"
         android:layout_toEndOf="@+id/searchButton"
-        android:background="@color/purple"
+        android:background="@drawable/rounded_button"
         android:contentDescription="@string/location_finder"
         app:srcCompat="@drawable/baseline_add_location_alt_24" />
 
@@ -69,8 +73,9 @@
         android:background="@drawable/bottom_background"
         app:menu="@menu/bottom_menu"
         app:itemIconTint="@drawable/item_selector"
+        app:itemTextColor="@color/white"
+        app:itemActiveIndicatorStyle="@style/Theme.BottomNavigationView.ActiveIndicator"
         android:layout_alignParentBottom="true" />
-
 
 
 </RelativeLayout>
