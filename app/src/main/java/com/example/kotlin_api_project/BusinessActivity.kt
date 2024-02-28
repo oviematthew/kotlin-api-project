@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_api_project.adapter.BusinessAdapter
 import com.example.kotlin_api_project.databinding.ActivityBusinessBinding
 import com.example.kotlin_api_project.viewmodel.BusinessesViewModel
-import com.example.kotlin_api_project.model.LocationManager
+import com.example.kotlin_api_project.network.LocationManager
 import com.example.kotlin_api_project.repository.ApiRepository
 
 class BusinessActivity : AppCompatActivity() {
@@ -52,6 +52,7 @@ class BusinessActivity : AppCompatActivity() {
 
         }
 
+        //bottom navigation
         val bottomNavigationView = binding.bottomNavigationView
         bottomNavigationView.selectedItemId = R.id.bottom_businesses
 
@@ -77,6 +78,7 @@ class BusinessActivity : AppCompatActivity() {
             }
         }
 
+        //onclick of search button, search filled text-field
         searchBtn.setOnClickListener {
             val location = searchField.text.toString()
             businessesViewModel.fetchBusinesses(

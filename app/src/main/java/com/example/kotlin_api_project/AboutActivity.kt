@@ -11,7 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.example.kotlin_api_project.databinding.ActivityAboutBinding
 import com.example.kotlin_api_project.gMapActivity.MapsActivity
-import com.example.kotlin_api_project.model.LocationManager
+import com.example.kotlin_api_project.network.LocationManager
 import com.google.android.gms.location.LocationServices
 
 class AboutActivity : AppCompatActivity() {

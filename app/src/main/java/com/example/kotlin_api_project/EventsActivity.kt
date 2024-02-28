@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_api_project.adapter.EventsAdapter
 import com.example.kotlin_api_project.databinding.ActivityEventsBinding
-import com.example.kotlin_api_project.model.LocationManager
+import com.example.kotlin_api_project.network.LocationManager
 import com.example.kotlin_api_project.network.YelpService
 import com.example.kotlin_api_project.network.RetrofitProvider
 import com.example.kotlin_api_project.repository.ApiRepository

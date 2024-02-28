@@ -1,4 +1,4 @@
-package com.example.kotlin_api_project.model
+package com.example.kotlin_api_project.network
 
 import com.google.android.gms.maps.model.LatLng
 
