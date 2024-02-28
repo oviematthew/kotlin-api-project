@@ -78,6 +78,9 @@ class EventsActivity : AppCompatActivity() {
         val apiRepository = ApiRepository(apiService)
 
 
+        // todo: set lat long from current location - vancouver (dummy data)
+        eventViewModel.searchNearbyEvents(null, 49.2827, -123.1207)
+
         eventViewModel.eventsData.observe(this, Observer { events ->
             if (events != null) {
                 // Update UI
@@ -87,8 +90,6 @@ class EventsActivity : AppCompatActivity() {
             }
         })
 
-        // todo: set lat long from current location
-        eventViewModel.searchNearbyEvents(null, 45.8, 77.9)
     }
 
 }
