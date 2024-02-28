@@ -20,6 +20,7 @@
     import com.google.android.gms.maps.model.BitmapDescriptorFactory
     import com.google.android.gms.tasks.Task
 
+
     class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         private val FINE_PERMISSION_CODE = 1
@@ -87,11 +88,15 @@
             }
         }
 
+
+
         // **Callback method invoked when the map is ready
         override fun onMapReady( googleMap: GoogleMap ) {
 
             currentLocation?.let {
                 val currentLatLng = LatLng( it.latitude, it.longitude )
+
+                LocationManager.setCurrentLocation(it.latitude, it.longitude)
 
                 // **Move camera to current location
                 googleMap.moveCamera( CameraUpdateFactory.newLatLngZoom( currentLatLng, 15f ) )
@@ -103,6 +108,19 @@
 
             }
         }
+
+        object LocationManager {
+            private var currentLocation: LatLng? = null
+
+            fun getCurrentLocation(): LatLng? {
+                return currentLocation
+            }
+
+            fun setCurrentLocation(latitude: Double, longitude: Double) {
+                currentLocation = LatLng(latitude, longitude)
+            }
+        }
+
 
         // **Callback method invoked when permissions are requested
         override fun onRequestPermissionsResult(
