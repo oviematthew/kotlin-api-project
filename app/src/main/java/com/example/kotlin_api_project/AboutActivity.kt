@@ -1,6 +1,5 @@
 package com.example.kotlin_api_project
 
-import com.example.kotlin_api_project.viewmodel.LocationViewModel
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -10,7 +9,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
-import androidx.lifecycle.ViewModelProvider
 import com.example.kotlin_api_project.databinding.ActivityAboutBinding
 import com.example.kotlin_api_project.gMapActivity.MapsActivity
 import com.example.kotlin_api_project.model.LocationManager
@@ -20,7 +18,6 @@ class AboutActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAboutBinding
     private var isPermissionGranted = false
-    private lateinit var locationViewModel: LocationViewModel
 
     private val requestLocationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
@@ -49,7 +46,6 @@ class AboutActivity : AppCompatActivity() {
         val btnViewLoc = binding.btnViewLoc
         btnViewLoc.setOnClickListener {
             if (isPermissionGranted) {
-                locationViewModel.setLocation(latitude, longitude)
                 navigateToMapsActivity()
             } else {
                 requestLocationPermission()

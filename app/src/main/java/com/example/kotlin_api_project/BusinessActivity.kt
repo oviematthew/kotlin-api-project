@@ -2,6 +2,7 @@ package com.example.kotlin_api_project
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -9,13 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_api_project.adapter.BusinessAdapter
 import com.example.kotlin_api_project.databinding.ActivityBusinessBinding
 import com.example.kotlin_api_project.viewmodel.BusinessesViewModel
-import com.example.kotlin_api_project.viewmodel.LocationViewModel
+import com.example.kotlin_api_project.model.LocationManager
+import com.example.kotlin_api_project.repository.ApiRepository
 
 class BusinessActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBusinessBinding
     private lateinit var businessesViewModel: BusinessesViewModel
-    private lateinit var locationViewModel: LocationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,23 +31,25 @@ class BusinessActivity : AppCompatActivity() {
 
         updateBusinessList()
 
-        //get an instance of locationViewModel
-        locationViewModel = ViewModelProvider(this)[LocationViewModel::class.java]
 
         val locationBtn = binding.locationBtn
         val searchField = binding.searchEditText
         val searchBtn = binding.searchButton
 
-        // Observe changes in location data
-        locationViewModel.locationData.observe(this, Observer { location ->
-            val (latitude, longitude) = location
-            // Handle latitude and longitude change, if needed
-        })
-
+        //set a click listener to location button
         locationBtn.setOnClickListener {
             // Retrieve latitude and longitude from LocationViewModel
-            val (latitude, longitude) = locationViewModel.locationData.value ?: Pair(0.0, 0.0)
-            searchField.setText("$latitude, $longitude")
+            val currentLocation = LocationManager.getCurrentLocation()
+            if (currentLocation != null) {
+                val latitude = currentLocation.latitude
+                val longitude = currentLocation.longitude
+                val longAndLat = "$latitude, $longitude"
+                searchField.setText(longAndLat)
+                businessesViewModel.fetchBusinesses(ApiRepository.apiKey, longAndLat)
+            } else {
+                Toast.makeText(this, "Current location is not available", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         val bottomNavigationView = binding.bottomNavigationView
@@ -59,6 +62,7 @@ class BusinessActivity : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_businesses -> {
+                    updateBusinessList()
                     true
                 }
                 R.id.bottom_events -> {
@@ -82,7 +86,19 @@ class BusinessActivity : AppCompatActivity() {
         }
     }
 
+
+
     private fun updateBusinessList() {
+        val currentLocation = LocationManager.getCurrentLocation()
+        if (currentLocation != null) {
+            val latitude = currentLocation.latitude
+            val longitude = currentLocation.longitude
+            val longAndLat = "$latitude, $longitude"
+            businessesViewModel.fetchBusinesses(ApiRepository.apiKey, longAndLat)
+        } else {
+            Toast.makeText(this, "Current location is not available", Toast.LENGTH_SHORT).show()
+        }
+
         businessesViewModel.businessesLiveData.observe(this, Observer { businesses ->
             if (businesses != null) {
                 val adapter = binding.recyclerView.adapter as BusinessAdapter
@@ -91,9 +107,5 @@ class BusinessActivity : AppCompatActivity() {
             }
         })
 
-        businessesViewModel.fetchBusinesses(
-            "HwsTLUWs7iiSpkg97eEZIYe-GEghXhhisTp6m7-446Pp_6xi16Kbt_U5pIp1hJgbEHp6DmJTlytzXBk22xQlbXE-a8tnJX2h1KfM-ay1ewXCa2i5HHcKd88Oaa_aZXYx",
-            ""
-        )
     }
 }
