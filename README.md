@@ -10,7 +10,7 @@
 ------------------------------------
 
 ### Ramesh
-#### -- Reviews For a Business Searched
+#### -- Check For a Business Competition
 #### -- About Screen (Info about dev team)
 ------------------------------------
 
