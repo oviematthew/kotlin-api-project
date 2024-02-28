@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_api_project.adapter.BusinessAdapter
 import com.example.kotlin_api_project.databinding.ActivityBusinessBinding
 import com.example.kotlin_api_project.viewmodel.BusinessesViewModel
+import com.example.kotlin_api_project.viewmodel.LocationViewModel
 
 class BusinessActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBusinessBinding
     private lateinit var businessesViewModel: BusinessesViewModel
+    private lateinit var locationViewModel: LocationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,19 +30,23 @@ class BusinessActivity : AppCompatActivity() {
 
         updateBusinessList()
 
+        //get an instance of locationViewModel
+        locationViewModel = ViewModelProvider(this)[LocationViewModel::class.java]
+
         val locationBtn = binding.locationBtn
         val searchField = binding.searchEditText
         val searchBtn = binding.searchButton
 
-        // Retrieve latitude and longitude from Intent extras
-        val intent = intent
-        if (intent.hasExtra("LATITUDE") && intent.hasExtra("LONGITUDE")) {
-            val latitude = intent.getDoubleExtra("LATITUDE", 0.0)
-            val longitude = intent.getDoubleExtra("LONGITUDE", 0.0)
+        // Observe changes in location data
+        locationViewModel.locationData.observe(this, Observer { location ->
+            val (latitude, longitude) = location
+            // Handle latitude and longitude change, if needed
+        })
 
-            locationBtn.setOnClickListener {
-                searchField.setText("$latitude, $longitude")
-            }
+        locationBtn.setOnClickListener {
+            // Retrieve latitude and longitude from LocationViewModel
+            val (latitude, longitude) = locationViewModel.locationData.value ?: Pair(0.0, 0.0)
+            searchField.setText("$latitude, $longitude")
         }
 
         val bottomNavigationView = binding.bottomNavigationView

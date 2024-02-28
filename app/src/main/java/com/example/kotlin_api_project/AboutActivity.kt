@@ -1,5 +1,6 @@
 package com.example.kotlin_api_project
 
+import com.example.kotlin_api_project.viewmodel.LocationViewModel
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.ViewModelProvider
 import com.example.kotlin_api_project.databinding.ActivityAboutBinding
 import com.example.kotlin_api_project.gMapActivity.MapsActivity
 import com.google.android.gms.location.LocationServices
@@ -17,12 +19,19 @@ class AboutActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAboutBinding
     private var isPermissionGranted = false
+    private lateinit var locationViewModel: LocationViewModel
 
-    private val requestLocationPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-        if (isGranted) {
-            isPermissionGranted = true
+    private val requestLocationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                isPermissionGranted = true
+                // Permission is granted, get the current location
+                getLastLocation()
+            }
         }
-    }
+
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +40,8 @@ class AboutActivity : AppCompatActivity() {
         // Check location permission
         checkLocationPermission()
 
+        locationViewModel = ViewModelProvider(this)[LocationViewModel::class.java]
+
         // Inflate the activity and set the contentView to the root of the xml
         binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -38,6 +49,7 @@ class AboutActivity : AppCompatActivity() {
         val btnViewLoc = binding.btnViewLoc
         btnViewLoc.setOnClickListener {
             if (isPermissionGranted) {
+                locationViewModel.setLocation(latitude, longitude)
                 navigateToMapsActivity()
             } else {
                 requestLocationPermission()
@@ -48,9 +60,8 @@ class AboutActivity : AppCompatActivity() {
         val bottomNavigationView = binding.bottomNavigationView
         bottomNavigationView.selectedItemId = R.id.bottom_about
 
-            // Set a listener for item selection
-
-            bottomNavigationView.setOnItemSelectedListener() { menuItem ->
+        // Set a listener for item selection
+        bottomNavigationView.setOnItemSelectedListener() { menuItem ->
             when (menuItem.itemId) {
                 R.id.bottom_about -> {
                     true
@@ -80,6 +91,8 @@ class AboutActivity : AppCompatActivity() {
             requestLocationPermission()
         } else {
             isPermissionGranted = true
+            // Permission is already granted, get the current location
+            getLastLocation()
         }
     }
 
@@ -88,30 +101,16 @@ class AboutActivity : AppCompatActivity() {
     }
 
     private fun navigateToMapsActivity() {
-        val intent = Intent( this, MapsActivity::class.java )
-        startActivity( intent )
-
-        // Check if permissions are granted
-        if ( checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ) {
-
-            // Permission is already granted, get the current location
-            getLastLocation()
-
-        } else {
-
-            // Permission has not been granted yet, request it
-            requestLocationPermission()
-
-        }
+        val intent = Intent(this, MapsActivity::class.java)
+        startActivity(intent)
     }
 
     private fun getLastLocation() {
-
         // Obtain the FusedLocationProviderClient to access location services
         val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         // Check if location permissions are granted
-        if ( ActivityCompat.checkSelfPermission(
+        if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
@@ -119,42 +118,31 @@ class AboutActivity : AppCompatActivity() {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-
             // Return if location permissions are not granted
             return
-
         }
 
         // Retrieve the last known location asynchronously
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location ->
-
                 // If a location is successfully retrieved
-                if ( location != null ) {
-
+                if (location != null) {
                     // Extract latitude and longitude from the location object
-                    val latitude = location.latitude
-                    val longitude = location.longitude
+                    latitude = location.latitude
+                    longitude = location.longitude
 
                     // Log the current location to Logcat
-                    Log.d( "location", "Current Location - Latitude: $latitude, Longitude: $longitude" )
-
+                    Log.d("location", "Current Location - Latitude: $latitude, Longitude: $longitude")
                 } else {
-
                     // Log an error if location retrieval fails
-                    Log.e( "failedLocation", "Failed to get location." )
-
+                    Log.e("failedLocation", "Failed to get location.")
                 }
             }
             .addOnFailureListener { e ->
-
                 // Log any errors encountered during location retrieval
-                Log.e( "errorLocation", "Error getting location: ${ e.message }" )
-
+                Log.e("errorLocation", "Error getting location: ${e.message}")
             }
     }
 
-
-
-// END OF CODE
+    // END OF CODE
 }
