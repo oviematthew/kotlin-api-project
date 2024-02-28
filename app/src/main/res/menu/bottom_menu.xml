@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/bottom_reviews"
-        android:icon="@drawable/baseline_chat_24"
+        android:icon="@drawable/baseline_grid_view_24"
         android:title="@string/reviews_title"/>
 
 
