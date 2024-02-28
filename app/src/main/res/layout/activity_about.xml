@@ -7,15 +7,46 @@
     tools:context=".AboutActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/about_screen"
+        android:text="@string/my_business_info_app"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_description"
+        android:textSize="24sp"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textStyle="italic" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@+id/description"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/members"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/members"
+        android:textSize="20sp"
+        android:layout_below="@+id/divider"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -31,10 +62,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/view_location"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/bottomNavigationView"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="86dp"
-        android:layout_marginEnd="10dp"
-        tools:ignore="RelativeOverlap" />
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp" />
 
 </RelativeLayout>
