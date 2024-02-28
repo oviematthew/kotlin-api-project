@@ -10,7 +10,6 @@ import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.example.kotlin_api_project.databinding.ActivityAboutBinding
-import com.example.kotlin_api_project.gMapActivity.MapsActivity
 import com.example.kotlin_api_project.network.LocationManager
 import com.google.android.gms.location.LocationServices
 
@@ -46,7 +45,7 @@ class AboutActivity : AppCompatActivity() {
         val btnViewLoc = binding.btnViewLoc
         btnViewLoc.setOnClickListener {
             if (isPermissionGranted) {
-                navigateToMapsActivity()
+                Log.d("Location","Location Received")
             } else {
                 requestLocationPermission()
             }
@@ -96,10 +95,7 @@ class AboutActivity : AppCompatActivity() {
         requestLocationPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
     }
 
-    private fun navigateToMapsActivity() {
-        val intent = Intent(this, MapsActivity::class.java)
-        startActivity(intent)
-    }
+
 
     private fun getLastLocation() {
         // Obtain the FusedLocationProviderClient to access location services

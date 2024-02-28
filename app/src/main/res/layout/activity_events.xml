@@ -44,6 +44,18 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="13dp"/>
 
+    <ImageButton
+        android:id="@+id/locationBtn"
+        android:layout_width="47dp"
+        android:layout_height="41dp"
+        android:layout_below="@+id/searchTextInputLayout"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="11dp"
+        android:layout_toEndOf="@+id/searchButton"
+        android:background="@drawable/rounded_button"
+        android:contentDescription="@string/location_finder"
+        app:srcCompat="@drawable/baseline_add_location_alt_24" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

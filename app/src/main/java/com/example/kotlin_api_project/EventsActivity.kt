@@ -38,6 +38,23 @@ class EventsActivity : AppCompatActivity() {
         updateEventList()
 
         val searchField = binding.searchEditText
+        val locationBtn = binding.locationBtn
+
+        //set a click listener to location button
+        locationBtn.setOnClickListener {
+            // Retrieve latitude and longitude from LocationViewModel
+            val currentLocation = LocationManager.getCurrentLocation()
+            if (currentLocation != null) {
+                val latitude = currentLocation.latitude
+                val longitude = currentLocation.longitude
+                val longAndLat = "$latitude, $longitude"
+                searchField.setText(longAndLat)
+                eventViewModel.searchNearbyEvents(null, latitude, longitude)
+            } else {
+                Toast.makeText(this, "Current location is not available", Toast.LENGTH_SHORT).show()
+            }
+
+        }
 
         // Access views using binding
         val bottomNavigationView = binding.bottomNavigationView
