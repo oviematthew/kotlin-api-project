@@ -59,7 +59,7 @@
     <string name="business_name">Business Name</string>
     <string name="business_address">Business Address</string>
     <string name="phone_number">Phone</string>
-
+    <string name="check_business_competition">Check business competition</string>
     <string name="event">Event</string>
     <string name="address">Address</string>
     <string name="desc">Description</string>
