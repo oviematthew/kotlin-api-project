@@ -26,27 +26,26 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
-//    buildFeatures {
-//        viewBinding= true
-//    }
 
     viewBinding {
         enable = true
     }
+
     buildFeatures {
         viewBinding = true
     }
 }
 
 dependencies {
-
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     val retrofit_version = "2.9.0"
@@ -77,5 +76,5 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
-
+    implementation("com.github.chivorns:smartmaterialspinner:2.0.0")
 }

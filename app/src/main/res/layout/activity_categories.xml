@@ -6,16 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".CategoriesActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:smsp_isSearchable="true"
+        app:smsp_searchHint="Search here"
+        app:smsp_searchHintColor="#808080"
+        app:smsp_searchTextColor="#000000"
+        app:smsp_searchBackgroundColor="#FFFFFF"
+        app:smsp_itemListBackgroundColor="#FFFFFF"
+        app:smsp_enableDismissSearch="true"
+        app:smsp_dismissSearchText="Dismiss"
+        app:smsp_dismissSearchColor="#000000"/>
+
+    <Button
+        android:id="@+id/btnGetBusinesses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/reviews_screen"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@+id/spinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Search your competitors" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/btnGetBusinesses"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/darker_gray" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBusinesses"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/divider"
+        android:layout_marginTop="16dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
