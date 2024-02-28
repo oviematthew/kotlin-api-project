@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlin_api_project.R
 import com.example.kotlin_api_project.model.Event
+import com.squareup.picasso.Picasso
 import com.example.kotlin_api_project.databinding.ItemEventBinding
 
 class EventsAdapter(var events: List<Event>) : RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
@@ -32,9 +34,18 @@ class EventsAdapter(var events: List<Event>) : RecyclerView.Adapter<EventsAdapte
         private val binding = ItemEventBinding.bind(itemView)
 
         fun bind(event: Event) {
-            Log.d("EventsAdapter", event.name)
+            Picasso.get().load(event.imageUrl).placeholder(R.drawable.baseline_calendar_month_24).into(binding.imageView)
             binding.eventNameTextView.text = event.name
-            binding.eventDescriptionTextView.text = event.description
+
+            if (event.location.displayAddress != null) {
+                binding.textAddress.text = event.location.displayAddress.joinToString()
+            } else {
+                binding.textAddress.text = "Address not available"
+            }
+
+            binding.textEventDescription.text = event.description
+            binding.textAttendees.text = "Attendees: ${event.attendingCount.toString()}"
+            binding.textIsFree.text = if (event.isFree) "Free" else "Paid"
         }
     }
 }
