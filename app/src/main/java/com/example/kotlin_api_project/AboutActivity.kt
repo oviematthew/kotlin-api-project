@@ -13,6 +13,7 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlin_api_project.databinding.ActivityAboutBinding
 import com.example.kotlin_api_project.gMapActivity.MapsActivity
+import com.example.kotlin_api_project.model.LocationManager
 import com.google.android.gms.location.LocationServices
 
 class AboutActivity : AppCompatActivity() {
@@ -40,7 +41,6 @@ class AboutActivity : AppCompatActivity() {
         // Check location permission
         checkLocationPermission()
 
-        locationViewModel = ViewModelProvider(this)[LocationViewModel::class.java]
 
         // Inflate the activity and set the contentView to the root of the xml
         binding = ActivityAboutBinding.inflate(layoutInflater)
@@ -131,11 +131,23 @@ class AboutActivity : AppCompatActivity() {
                     latitude = location.latitude
                     longitude = location.longitude
 
+                    LocationManager.setCurrentLocation(latitude, longitude)
+
                     // Log the current location to Logcat
+
                     Log.d("location", "Current Location - Latitude: $latitude, Longitude: $longitude")
+
+                    Log.d( "locationManager", "Current Location - Latitude: $latitude, Longitude: $longitude" )
+
+
                 } else {
                     // Log an error if location retrieval fails
+
                     Log.e("failedLocation", "Failed to get location.")
+
+                    Log.e( "locationManager", "Failed to get location." )
+
+
                 }
             }
             .addOnFailureListener { e ->
