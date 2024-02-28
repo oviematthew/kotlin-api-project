@@ -65,6 +65,6 @@ class ApiRepository(private val yelpService: YelpService) {
     }
 
     companion object {
-        const val apiKey = "HwsTLUWs7iiSpkg97eEZIYe-GEghXhhisTp6m7-446Pp_6xi16Kbt_U5pIp1hJgbEHp6DmJTlytzXBk22xQlbXE-a8tnJX2h1KfM-ay1ewXCa2i5HHcKd88Oaa_aZXYx"
+        const val apiKey = "_1nTppWn4DJ4AWLQk9bSu8jWkkc-ELlxtpfcUk1di7VdM24Kf-w8sQsmi5Q0QX_Zt78-JPdE4MK-uy_TSiqUQ5et7HqSJS9OoWkxiAr69Y37aqy9LF37ojL3gLHfZXYx"
     }
 }
