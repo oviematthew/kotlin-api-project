@@ -44,23 +44,19 @@ class EventsActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.bottom_about -> {
                     startActivity(Intent(applicationContext, AboutActivity::class.java))
-                    overridePendingTransition(0, 0)
                     true
                 }
                 R.id.bottom_businesses -> {
                     startActivity(Intent(applicationContext, BusinessActivity::class.java))
-                    overridePendingTransition(0, 0)
                     true
                 }
                 R.id.bottom_events -> {
                     // Fetch events
                     updateEventList()
-                    overridePendingTransition(0, 0)
                     true
                 }
                 R.id.bottom_reviews -> {
                     startActivity(Intent(applicationContext, ReviewsActivity::class.java))
-                    overridePendingTransition(0, 0)
                     true
                 }
                 else -> false

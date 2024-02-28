@@ -52,10 +52,11 @@ class BusinessActivity : AppCompatActivity() {
 
         }
 
-        //bottom navigation
+        // Access views using binding
         val bottomNavigationView = binding.bottomNavigationView
         bottomNavigationView.selectedItemId = R.id.bottom_businesses
 
+        // Set a listener for item selection for bottom navigation
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.bottom_about -> {
