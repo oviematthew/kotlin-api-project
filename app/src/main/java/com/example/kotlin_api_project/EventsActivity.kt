@@ -2,12 +2,14 @@ package com.example.kotlin_api_project
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_api_project.adapter.EventsAdapter
 import com.example.kotlin_api_project.databinding.ActivityEventsBinding
+import com.example.kotlin_api_project.model.LocationManager
 import com.example.kotlin_api_project.network.YelpService
 import com.example.kotlin_api_project.network.RetrofitProvider
 import com.example.kotlin_api_project.repository.ApiRepository
@@ -77,9 +79,14 @@ class EventsActivity : AppCompatActivity() {
         val apiService = RetrofitProvider.retrofitInstance.create(YelpService::class.java)
         val apiRepository = ApiRepository(apiService)
 
-
-        // todo: set lat long from current location - vancouver (dummy data)
-        eventViewModel.searchNearbyEvents(null, 49.2827, -123.1207)
+        val currentLocation = LocationManager.getCurrentLocation()
+        if (currentLocation != null) {
+            val latitude = currentLocation.latitude
+            val longitude = currentLocation.longitude
+            eventViewModel.searchNearbyEvents(null, latitude, longitude)
+        } else {
+            Toast.makeText(this, "Current location is not available", Toast.LENGTH_SHORT).show()
+        }
 
         eventViewModel.eventsData.observe(this, Observer { events ->
             if (events != null) {

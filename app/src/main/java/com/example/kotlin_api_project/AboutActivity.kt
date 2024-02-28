@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.example.kotlin_api_project.databinding.ActivityAboutBinding
 import com.example.kotlin_api_project.gMapActivity.MapsActivity
+import com.example.kotlin_api_project.model.LocationManager
 import com.google.android.gms.location.LocationServices
 
 class AboutActivity : AppCompatActivity() {
@@ -30,6 +31,19 @@ class AboutActivity : AppCompatActivity() {
 
         // Check location permission
         checkLocationPermission()
+
+        // Check if permissions are granted
+        if ( checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ) {
+
+            // Permission is already granted, get the current location
+            getLastLocation()
+
+        } else {
+
+            // Permission has not been granted yet, request it
+            requestLocationPermission()
+
+        }
 
         // Inflate the activity and set the contentView to the root of the xml
         binding = ActivityAboutBinding.inflate(layoutInflater)
@@ -139,13 +153,15 @@ class AboutActivity : AppCompatActivity() {
                     val latitude = location.latitude
                     val longitude = location.longitude
 
+                    LocationManager.setCurrentLocation(latitude, longitude)
+
                     // Log the current location to Logcat
-                    Log.d( "location", "Current Location - Latitude: $latitude, Longitude: $longitude" )
+                    Log.d( "locationManager", "Current Location - Latitude: $latitude, Longitude: $longitude" )
 
                 } else {
 
                     // Log an error if location retrieval fails
-                    Log.e( "failedLocation", "Failed to get location." )
+                    Log.e( "locationManager", "Failed to get location." )
 
                 }
             }
