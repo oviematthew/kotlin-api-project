@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kotlin_api_project.model.Category
-import com.example.kotlin_api_project.model.CategoryResponse
 import com.example.kotlin_api_project.network.RetrofitProvider
 import com.example.kotlin_api_project.network.YelpService
 import com.example.kotlin_api_project.repository.ApiRepository

@@ -7,17 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.chivorn.smartmaterialspinner.SmartMaterialSpinner
 import com.example.kotlin_api_project.databinding.ActivityCategoriesBinding
-import com.example.kotlin_api_project.model.Category
 import com.example.kotlin_api_project.repository.ApiRepository
 import com.example.kotlin_api_project.viewmodel.CategoryViewModel
 import com.example.kotlin_api_project.viewmodel.BusinessesViewModel
 import com.example.kotlin_api_project.adapter.BusinessAdapter
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -35,6 +33,8 @@ class CategoriesActivity : AppCompatActivity() {
 
         binding = ActivityCategoriesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.progressBar.visibility = View.VISIBLE
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -67,8 +67,9 @@ class CategoriesActivity : AppCompatActivity() {
         categoryViewModel.fetchCategories(ApiRepository.apiKey)
         categoryViewModel.categoryLiveData.observe(this) { categories ->
             if (categories != null) {
+                binding.progressBar.visibility = View.GONE
                 val categoryTitles = categories.map { it.title }
-                binding.spinner.setItem(categoryTitles)
+                binding.spinner.item = categoryTitles
 
                 binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(adapterView: AdapterView<*>, view: View, position: Int, id: Long) {
@@ -92,6 +93,7 @@ class CategoriesActivity : AppCompatActivity() {
                         val latitude = location.latitude
                         val longitude = location.longitude
                         selectedCategoryAlias?.let { it1 ->
+                            binding.progressBar.visibility = View.VISIBLE
                             businessesViewModel.fetchBusinesses(ApiRepository.apiKey, "$latitude,$longitude", it1)
                         }
                     }
@@ -100,14 +102,21 @@ class CategoriesActivity : AppCompatActivity() {
         }
 
         businessesViewModel.businessesLiveData.observe(this) { businesses ->
+            binding.progressBar.visibility = View.GONE
             if (businesses != null) {
-                val businessAdapter = BusinessAdapter(businesses)
-                binding.rvBusinesses.layoutManager = LinearLayoutManager(this)
-                binding.rvBusinesses.adapter = businessAdapter
+                if (businesses.isEmpty()) {
+                    Toast.makeText(this, "No businesses available in this category", Toast.LENGTH_SHORT).show()
+                    binding.rvBusinesses.adapter = null
+                } else {
+                    val businessAdapter = BusinessAdapter(businesses)
+                    binding.rvBusinesses.layoutManager = LinearLayoutManager(this)
+                    binding.rvBusinesses.adapter = businessAdapter
+                }
             } else {
                 Log.e("CategoriesActivity", "Error: businesses is null")
             }
         }
+
 
     }
 }
