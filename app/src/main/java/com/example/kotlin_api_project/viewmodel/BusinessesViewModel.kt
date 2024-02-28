@@ -1,26 +1,32 @@
 package com.example.kotlin_api_project.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kotlin_api_project.model.Businesses
 import com.example.kotlin_api_project.network.RetrofitProvider
+import com.example.kotlin_api_project.network.YelpService
 import com.example.kotlin_api_project.repository.ApiRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class BusinessesViewModel : ViewModel() {
 
-    private val _businessesLiveData = MutableLiveData<List<Businesses>>()
-    val businessesLiveData: MutableLiveData<List<Businesses>> get() = _businessesLiveData
+    private val repository: ApiRepository
+    private val _businessesLiveData = MutableLiveData<List<Businesses>?>()
+    val businessesLiveData: LiveData<List<Businesses>?> get() = _businessesLiveData
 
-    fun fetchBusinesses(apiKey: String, term: String, latitude: Double, longitude: Double) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val response = ApiRepository(RetrofitProvider.createYelpService())
-//                .fetchBusinessesFromServer(apiKey, term, latitude, longitude)
+    init {
+        val apiService = RetrofitProvider.retrofitInstance.create(YelpService::class.java)
+        repository = ApiRepository(apiService)
+    }
 
-//            _businessesLiveData.postValue(response.body())
+    fun fetchBusinesses(apiKey: String, location: String) {
+        viewModelScope.launch {
+
+                val response = repository.getBusinesses(apiKey, location)
+                _businessesLiveData.value = response
+
         }
     }
 }

@@ -28,7 +28,7 @@
             android:id="@+id/searchEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/search_businesses"/>
+            android:hint="@string/search_location"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/searchTextInputLayout"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="5dp"
         android:text="@string/search"
         app:cornerRadius="0dp" />
 
@@ -55,9 +56,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="445dp"
+        android:layout_above="@+id/bottomNavigationView"
         android:layout_below="@id/searchButton"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
