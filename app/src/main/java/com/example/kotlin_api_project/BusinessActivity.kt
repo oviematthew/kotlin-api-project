@@ -73,7 +73,7 @@ class BusinessActivity : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_reviews -> {
-                    startActivity(Intent(applicationContext, ReviewsActivity::class.java))
+                    startActivity(Intent(applicationContext, CategoriesActivity::class.java))
                     true
                 }
                 else -> false

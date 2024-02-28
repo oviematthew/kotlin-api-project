@@ -22,7 +22,7 @@
             android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".ReviewsActivity"
+            android:name=".CategoriesActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
         <activity

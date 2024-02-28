@@ -3,17 +3,16 @@ package com.example.kotlin_api_project
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.kotlin_api_project.databinding.ActivityEventsBinding
-import com.example.kotlin_api_project.databinding.ActivityReviewsBinding
+import com.example.kotlin_api_project.databinding.ActivityCategoriesBinding
 
-class ReviewsActivity : AppCompatActivity() {
+class CategoriesActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityReviewsBinding
+    private lateinit var binding: ActivityCategoriesBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Inflate the activity and set the contentView to the root of the xml
-        binding = ActivityReviewsBinding.inflate(layoutInflater)
+        binding = ActivityCategoriesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Access views using binding

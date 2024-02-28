@@ -3,11 +3,11 @@
     <string name="about_title">About</string>
     <string name="business_title">Businesses</string>
     <string name="events_title">Events</string>
-    <string name="reviews_title">Reviews</string>
+    <string name="reviews_title">Categories</string>
     <string name="about_screen">About Group Members</string>
     <string name="business_screen">Businesses</string>
     <string name="events_screen">Events Screen</string>
-    <string name="reviews_screen">Reviews Screen</string>
+    <string name="reviews_screen">Categories Screen</string>
     <string name="maps_apiKey">AIzaSyAWEIFtX5oSl2gC-bROnD_bPwHK07dcHS4</string>
     <string name="title_activity_google_maps">GoogleMapsActivity</string>
     <!-- Strings used for fragments for navigation -->
