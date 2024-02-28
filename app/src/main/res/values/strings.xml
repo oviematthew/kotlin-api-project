@@ -65,4 +65,8 @@
     <string name="desc">Description</string>
     <string name="attendees">Attending Count</string>
     <string name="isfree">IsFree</string>
+    <string name="my_business_info_app">My Business Info App</string>
+    <string name="app_description">This application serves as a comprehensive guide for both businesses and individuals. It allows you to explore nearby businesses and events, providing a dynamic way to engage with your local community. Moreover, if you\'re a business owner, this app offers a unique feature to identify and understand your competition within your specific business category. Enhance your local experience and business strategy with our app.</string>
+    <string name="members">Members:\n1. Matthew Ovie\n2. Imasha Ekanayake\n3. Ronald Bagaporo Jr.\n4. Ramesh Abeysekara</string>
+    <string name="search_your_competitors">Search your competitors</string>
 </resources>

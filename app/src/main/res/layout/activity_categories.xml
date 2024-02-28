@@ -23,14 +23,9 @@
         android:layout_marginEnd="16dp"
         android:layout_below="@+id/title"
         app:smsp_isSearchable="true"
-        app:smsp_searchHint="Select a category"
-        app:smsp_searchHintColor="#808080"
-        app:smsp_searchTextColor="#000000"
-        app:smsp_searchBackgroundColor="#FFFFFF"
-        app:smsp_itemListBackgroundColor="#FFFFFF"
+        app:smsp_searchHint="Type to filter"
         app:smsp_enableDismissSearch="true"
-        app:smsp_dismissSearchText="Dismiss"
-        app:smsp_dismissSearchColor="#000000"/>
+        app:smsp_dismissSearchText="Dismiss" />
 
     <Button
         android:id="@+id/btnGetBusinesses"
@@ -39,7 +34,7 @@
         android:layout_below="@+id/spinner"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Search your competitors" />
+        android:text="@string/search_your_competitors" />
 
     <View
         android:id="@+id/divider"
