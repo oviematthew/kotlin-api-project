@@ -1,5 +1,6 @@
 package com.example.kotlin_api_project
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -27,7 +28,7 @@ class BusinessActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        businessesViewModel = ViewModelProvider(this).get(BusinessesViewModel::class.java)
+        businessesViewModel = ViewModelProvider(this)[BusinessesViewModel::class.java]
 
         updateBusinessList()
 
@@ -82,15 +83,13 @@ class BusinessActivity : AppCompatActivity() {
         //onclick of search button, search filled text-field
         searchBtn.setOnClickListener {
             val location = searchField.text.toString()
-            businessesViewModel.fetchBusinesses(
-                "HwsTLUWs7iiSpkg97eEZIYe-GEghXhhisTp6m7-446Pp_6xi16Kbt_U5pIp1hJgbEHp6DmJTlytzXBk22xQlbXE-a8tnJX2h1KfM-ay1ewXCa2i5HHcKd88Oaa_aZXYx",
-                location
-            )
+            businessesViewModel.fetchBusinesses(ApiRepository.apiKey, location)
         }
     }
 
 
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun updateBusinessList() {
         val currentLocation = LocationManager.getCurrentLocation()
         if (currentLocation != null) {
