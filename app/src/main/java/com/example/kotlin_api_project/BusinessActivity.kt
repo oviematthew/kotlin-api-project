@@ -1,14 +1,13 @@
 package com.example.kotlin_api_project
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_api_project.adapter.BusinessAdapter
 import com.example.kotlin_api_project.databinding.ActivityBusinessBinding
-import com.example.kotlin_api_project.network.RetrofitProvider
 import com.example.kotlin_api_project.viewmodel.BusinessesViewModel
 
 class BusinessActivity : AppCompatActivity() {
@@ -21,7 +20,7 @@ class BusinessActivity : AppCompatActivity() {
         binding = ActivityBusinessBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var adapter = BusinessAdapter(emptyList())
+        val adapter = BusinessAdapter(emptyList())
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -70,19 +69,25 @@ class BusinessActivity : AppCompatActivity() {
 
         searchBtn.setOnClickListener {
             val location = searchField.text.toString()
-            businessesViewModel.fetchBusinesses("HwsTLUWs7iiSpkg97eEZIYe-GEghXhhisTp6m7-446Pp_6xi16Kbt_U5pIp1hJgbEHp6DmJTlytzXBk22xQlbXE-a8tnJX2h1KfM-ay1ewXCa2i5HHcKd88Oaa_aZXYx", location, 0.0, 0.0)
+            businessesViewModel.fetchBusinesses(
+                "HwsTLUWs7iiSpkg97eEZIYe-GEghXhhisTp6m7-446Pp_6xi16Kbt_U5pIp1hJgbEHp6DmJTlytzXBk22xQlbXE-a8tnJX2h1KfM-ay1ewXCa2i5HHcKd88Oaa_aZXYx",
+                location
+            )
         }
     }
 
     private fun updateBusinessList() {
         businessesViewModel.businessesLiveData.observe(this, Observer { businesses ->
             if (businesses != null) {
-                var adapter = binding.recyclerView.adapter as BusinessAdapter
+                val adapter = binding.recyclerView.adapter as BusinessAdapter
                 adapter.businessList = businesses
                 adapter.notifyDataSetChanged()
             }
         })
 
-        businessesViewModel.fetchBusinesses("HwsTLUWs7iiSpkg97eEZIYe-GEghXhhisTp6m7-446Pp_6xi16Kbt_U5pIp1hJgbEHp6DmJTlytzXBk22xQlbXE-a8tnJX2h1KfM-ay1ewXCa2i5HHcKd88Oaa_aZXYx", null, 0.0, 0.0)
+        businessesViewModel.fetchBusinesses(
+            "HwsTLUWs7iiSpkg97eEZIYe-GEghXhhisTp6m7-446Pp_6xi16Kbt_U5pIp1hJgbEHp6DmJTlytzXBk22xQlbXE-a8tnJX2h1KfM-ay1ewXCa2i5HHcKd88Oaa_aZXYx",
+            ""
+        )
     }
 }

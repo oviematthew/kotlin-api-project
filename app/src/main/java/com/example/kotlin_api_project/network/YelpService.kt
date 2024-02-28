@@ -1,6 +1,7 @@
 package com.example.kotlin_api_project.network
 
 import com.example.kotlin_api_project.model.Businesses
+import com.example.kotlin_api_project.model.BusinessesResponse
 import com.example.kotlin_api_project.model.EventsResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -12,11 +13,10 @@ interface YelpService {
     @GET("businesses/search")
     suspend fun getBusinesses(
         @Header("Authorization") authorizationHeader: String,
-        @Query("term") term: String,
         @Query("location") location: String,
         @Query("sort_by") sortBy: String = "best_match",
-        @Query("limit") limit: Int = 20
-    ): Response<List<Businesses>>
+        @Query("limit") limit: Int = 50
+    ): Response<BusinessesResponse>
 
     @GET("events?limit=3&sort_by=desc&sort_on=popularity")
     suspend fun getNearbyEvents(

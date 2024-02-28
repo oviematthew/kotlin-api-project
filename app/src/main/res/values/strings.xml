@@ -53,7 +53,10 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="view_location">View Location</string>
-    <string name="search_businesses">Search Businesses</string>
+    <string name="search_location">Search location</string>
     <string name="search">Search</string>
     <string name="location_finder">Location Finder</string>
+    <string name="business_name">Business Name</string>
+    <string name="business_address">Business Address</string>
+    <string name="phone_number">Phone</string>
 </resources>

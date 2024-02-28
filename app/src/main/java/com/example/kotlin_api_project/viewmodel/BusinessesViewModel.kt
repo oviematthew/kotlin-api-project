@@ -21,21 +21,12 @@ class BusinessesViewModel : ViewModel() {
         repository = ApiRepository(apiService)
     }
 
-    fun fetchBusinesses(apiKey: String, term: String, location: String) {
+    fun fetchBusinesses(apiKey: String, location: String) {
         viewModelScope.launch {
-            try {
-                val response = repository.getBusinesses(apiKey, term, location)
 
-                if (response.isSuccessful) {
-                    _businessesLiveData.value = response.body()
-                } else {
-                    // Handle unsuccessful response
-                    // You can log an error or handle it based on your requirements
-                }
-            } catch (e: Exception) {
-                // Handle exception
-                // You can log an error or handle it based on your requirements
-            }
+                val response = repository.getBusinesses(apiKey, location)
+                _businessesLiveData.value = response
+
         }
     }
 }
