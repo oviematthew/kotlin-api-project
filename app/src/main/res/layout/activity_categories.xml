@@ -14,7 +14,8 @@
         android:textSize="24sp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="16dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center" />
 
     <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
         android:id="@+id/spinner"
