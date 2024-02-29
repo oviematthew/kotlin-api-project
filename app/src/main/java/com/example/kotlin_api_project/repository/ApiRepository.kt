@@ -45,7 +45,7 @@ class ApiRepository(private val yelpService: YelpService) {
 
     suspend fun getNearbyEvents(location: String?, latitude: Double?, longitude: Double?): List<Event>? {
         return try {
-            val response = yelpService.getNearbyEvents("Bearer ${apiKey}", location, latitude, longitude)
+            val response = yelpService.getNearbyEvents("Bearer $apiKey", location, latitude, longitude)
             logApiResponse(response)
 
             if (response.isSuccessful) {

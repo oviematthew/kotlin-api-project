@@ -9,7 +9,6 @@
     <string name="events_screen">Events Screen</string>
     <string name="reviews_screen">Categories Screen</string>
     <string name="maps_apiKey">AIzaSyAWEIFtX5oSl2gC-bROnD_bPwHK07dcHS4</string>
-    <string name="title_activity_google_maps">GoogleMapsActivity</string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
@@ -29,7 +28,7 @@
     <string name="isfree">IsFree</string>
     <string name="my_business_info_app">My Business Info App</string>
     <string name="app_description">This android mobile application serves as a comprehensive guide for both businesses and individuals. It allows you to explore nearby businesses and events, providing a dynamic way to engage with your local community. Moreover, if you\'re a business owner, this app offers a unique feature to identify and understand your competition within your specific business category. Enhance your personal local experience and business strategy with our app.</string>
-    <string name="members">Members:\n1. Matthew Ovie\n2. Imasha Ekanayake\n3. Ronald Bagaporo Jr.\n4. Ramesh Abeysekara</string>
+    <string name="members">Members:\n1. Matthew Ovie Enamuotor \n2. Imasha Ekanayake\n3. Ronald Bagaporo Jr.\n4. Ramesh Abeysekara</string>
     <string name="search_your_competitors">Search my competitors</string>
     <string name="search_event">Search</string>
     <string name="search_for_events">Search for events</string>

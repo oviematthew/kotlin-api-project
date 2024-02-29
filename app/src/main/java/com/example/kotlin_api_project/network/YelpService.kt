@@ -13,7 +13,7 @@ import retrofit2.http.Query
 interface YelpService {
     @GET("businesses/search")
     suspend fun getBusinesses(
-        @Header("Authorization") authorizationHeader: String,
+        @Header("Authorization") authorization: String,
         @Query("location") location: String,
         @Query("categories") categories: String? = null,
         @Query("sort_by") sortBy: String = "best_match",
