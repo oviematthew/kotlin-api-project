@@ -48,9 +48,7 @@ class CategoriesActivity : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_businesses -> {
-                    val intent = Intent(applicationContext, BusinessActivity::class.java)
-                    intent.putExtra("CATEGORY_ALIAS", selectedCategoryAlias)
-                    startActivity(intent)
+                    startActivity(Intent(applicationContext, BusinessActivity::class.java))
                     true
                 }
                 R.id.bottom_events -> {

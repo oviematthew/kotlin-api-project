@@ -24,10 +24,15 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_below="@+id/title"
+        app:smsp_searchHeaderText="@string/category_select_text"
         app:smsp_isSearchable="true"
-        app:smsp_searchHint="Type to filter"
+        app:smsp_searchHint="@string/filter_text"
         app:smsp_enableDismissSearch="true"
-        app:smsp_dismissSearchText="Dismiss" />
+        app:smsp_searchHeaderBackgroundColor="@color/purple"
+        app:smsp_dismissSearchText="@string/dismiss_text"
+        app:smsp_dismissSearchColor="@color/purple"
+        app:smsp_selectedItemListColor="@color/purple"
+        app:smsp_hint="@string/category_select_placeholder_text" />
 
     <Button
         android:id="@+id/btnGetBusinesses"
